@@ -14,8 +14,8 @@ int main(){
 
 	// Alocando dinamicamente e verificando
 	V = malloc(n * sizeof(int));
-	A[0] = malloc((n / 2) * sizeof(int));
-	A[1] = malloc((n / 2) * sizeof(int));
+	A[0] = malloc(n * sizeof(int));
+	A[1] = malloc(n * sizeof(int));
 	if(V == NULL || A[0] == NULL || A[1] == NULL){
 		printf("Memoria esgotada!\n");
 		exit(-1);
