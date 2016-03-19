@@ -1,50 +1,77 @@
+/****
+*
+* Título: Questão 11
+*
+* Autor: Thales Augusto
+*
+* Data de Criação: 18/03/2016
+* Última modificação: 18/03/2016
+*
+* Descrição: Modifique o programa anterior para alocar as variaveis estruturas dinamicamente e utilizar
+ponteiros para a manipulacao das mesmas.
+*
+*
+* Entrada: 
+Digite a data da primeira pessoa(dd/mm/aaaa): 30
+12
+2000
+Digite a data da segunda pessoa(dd/mm/aaaa): 01
+01
+1999
+*
+* Saída: 
+A segunda pessoa eh a mais velha!
+*
+*
+****/
+
+// Importacao das bibliotecas e declaracao da contante
 #include<stdio.h>
 #include<stdlib.h>
 
+#define c 2 // quantidade de pessoas
+
+// Estrutura para data
 typedef struct{
 	int dia, mes, ano;
-}Tdata;
+}tData;
 
 int main(){
-	Tdata *data, *jovem;
-	int i, n;
+	int tot[c]; // dias vividos de cada pessoas
+	tData *data; // manipulador de datas
 
-	do{
-		printf("Digite a quantidade de pessoas(> 0): ");
-		scanf("%d", &n);
-	}while(n < 0);
-
-	data = malloc(n * sizeof(Tdata));
+	// Alocando memoria para data e verificando
+	data = (tData *) malloc(c * sizeof(tData));
 	if(data == NULL){
-		printf("Memoria esgotada\n");
+		printf("memoria esgotada!\n");
 		exit(-1);
 	}
 
-	jovem = &data[0];
+	// Solicitando as datas e conferindo
+	do{
+		printf("Digite a data da primeira pessoa(dd/mm/aaaa): ");
+		scanf("%d %d %d", &data[0].dia, &data[0].mes, &data[0].ano);
+	}while((data[0].dia < 1 || data[0].dia > 31) || (data[0].mes < 1 || data[0].mes > 12) || (data[0].ano > 2016));
 
-	for(i = 0; i < n; i++){
-		printf("Data[%d] no formato dd/mm/aa: ", i);
-		setbuf(stdin, NULL);
-		scanf("%d%*c%d%*c%d", &data[i].dia, &data[i].mes, &data[i].ano);
+	do{
+		printf("Digite a data da segunda pessoa(dd/mm/aaaa): ");
+       	scanf("%d %d %d", &data[1].dia, &data[1].mes, &data[1].ano);
+	}while((data[1].dia < 1 || data[1].dia > 31) || (data[1].mes < 1 || data[1].mes > 12) || (data[1].ano > 2016));
 
-		if(data[i].ano > jovem->ano)
-			jovem = &data[0];
-		else if(data[i].ano < jovem->ano)
-			jovem = &data[1];
-		else
-			if(data[i].mes > jovem->mes)
-				jovem = &data[0];
-			else if(data[i].mes < jovem->mes)
-				jovem = &data[1];
-			else
-				if(data[i].dia > jovem->dia)
-					jovem = &data[0];
-				else
-					jovem = &data[1];
+	// Calculando o total de dias vividos de cada pessoa
+	tot[0] = (data[0].ano * 365) + (data[0].mes * 30) + data[0].dia;
+	tot[1] = (data[1].ano * 365) + (data[1].mes * 30) + data[1].dia;
 
-	}
+	// Verificando qual eh mais jovem
+	if(tot[0] > tot[1])
+		printf("A primeira pessoa eh a mais jovem!\n");
+	else if(tot[0] < tot[1])
+		printf("A segunda pessoa eh a mais jovem!\n");
+	else
+		printf("Elas tem a mesma idade!\n");
 
-	printf("A mais jovem tem nasceu %02d/%02d/%d\n", jovem->dia, jovem->mes, jovem->ano);
+	// Libendo memoria pro SO
+	free(data);
 
 	return 0;
 }

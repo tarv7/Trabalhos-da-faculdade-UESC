@@ -1,54 +1,76 @@
-/*
-Escreva um programa que leia os dados de um aluno e os imprima na tela. Considere os
-dados (nome, sobrenome, idade, telefone, sexo, email). Utilize o operador de ponto para
-manipular a estrutura.
-*/
+/****
+*
+* Título: Questão 02
+*
+* Autor: Thales Augusto
+*
+* Data de Criação: 17/03/2016
+* Última modificação: 17/03/2016
+*
+* Descrição: Reescreva o programa anterior utilizando um ponteiro para manipular a estrutura.
+*
+*
+* Entrada: 
+Thales
+Augusto
+7381283929
+m
+thallles.ramos@gmail.com 
 
+*
+* Saída: 
+Nome: Thales Augusto
+Telefone: 7381283929
+Sexo: m
+Email: thallles.ramos@gmail.com
+*
+*
+****/
+
+// Declaração das bibliotecas
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 
-#define n 32
-#define s 64
-#define e 40
-
+// Struct dos Alunos
 typedef struct{
-	char nome[n], sobrenome[s], email[e], sexo;
-	int idade;
-	int telefone;
-}Talunos;
+	char nome[50], sobrenome[50], telefone[13], sexo, email[25];
+}tAluno;
 
 int main(){
-	Talunos aluno, *p;
+	tAluno aluno,
+		*p; // ponteiro para maniupular a estrutura
 
 	p = &aluno;
 
-	printf("Nome: ");
-	fgets(p->nome, n, stdin);
+	// Pedindo dados dos alunos e tratando-os
+	printf("Digite Nome, Sobrenome, telefone, email, sexo(M/F) e email, respectivamente: \n");
+
+	setbuf(stdin, NULL);
+	fgets(p->nome, 50, stdin);
 	p->nome[strlen(p->nome) - 1] = '\0';
 
-	printf("Sobrenome: ");
-	fgets(p->sobrenome, s, stdin);
+	setbuf(stdin, NULL);
+	fgets(p->sobrenome, 50, stdin);
 	p->sobrenome[strlen(p->sobrenome) - 1] = '\0';
 
-	printf("Email: ");
-	fgets(p->email, e, stdin);
+	setbuf(stdin, NULL);
+	fgets(p->telefone, 13, stdin);
+	p->telefone[strlen(p->telefone) - 1] = '\0';
+
+	do{
+		setbuf(stdin, NULL);
+		p->sexo = getchar();
+		getchar();
+	}while(tolower(p->sexo) != 'f' && tolower(p->sexo) != 'm');
+
+	setbuf(stdin, NULL);
+	fgets(p->email, 25, stdin);
 	p->email[strlen(p->email) - 1] = '\0';
 
-	printf("Sexo: ");
-	p->sexo = getchar();
-
-	printf("Idade: ");
-	scanf("%d", &p->idade);
-
-	printf("Telefone: ");
-	scanf("%d", &p->telefone);
-
-	printf("\n\nNome: %s %s\n", p->nome, p->sobrenome);
-	printf("Email: %s\n", p->email);
-	printf("Sexo: %c\n", p->sexo);
-	printf("Idade: %d\n", p->idade);
-	printf("Telefone: %d\n", p->telefone);
+	// Saída para o usuário
+	printf("Nome: %s %s\nTelefone: %s\nSexo: %c\nEmail: %s\n", p->nome, p->sobrenome, p->telefone, p->sexo, p->email);
 
 	return 0;
 }
