@@ -30,7 +30,7 @@ public class Carro {
 				 + (this.teto * 4000) + (this.roda * 2850) + (this.sensor * 300);
 	}
 	
-	public static void contabilizaAcessorios(String novoAcessorio){
+	private static void contabilizaAcessorios(String novoAcessorio){
 		if(novoAcessorio.equals("ar_condicionado")){
 			arT++;
 		}else if(novoAcessorio.equals("vidro_eletrico")){
