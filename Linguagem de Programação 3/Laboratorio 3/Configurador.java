@@ -8,7 +8,7 @@ public class Configurador {
 		valorTotal += carro.getValor();
 	}
 
-	public int void totalCarros(){
+	public static int totalCarros(){
 		return quant;
 	}
 }
