@@ -1,8 +1,3 @@
-/*
- * ar_condicionado	#	R$	1500, vidro_eletrico	 #	 R$	 600,	 
- * direcao_hidraulica	 #	 R$	 1150,	 teto_solar	 #	 R$	 4000,		
- * roda_liga	#	2850	e	sensor_estacionamento	#	R$	300.
- */
 public class Principal {
 	public static void main(String[] args) {
 		Carro carro1 = new Carro();
@@ -34,6 +29,7 @@ public class Principal {
 		Configurador.addCarro(carro4);
 		Configurador.addCarro(carro5);
 		
-		Configurador.Imprime();
+		Carro.Imprime();
 	}
 }
+
