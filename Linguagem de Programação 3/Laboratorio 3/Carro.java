@@ -47,7 +47,7 @@ public class Carro {
 	}
 	
 	public static void Imprime(){
-		System.out.println("Quantidade de carros: " + Configurador.quant);
+		System.out.println("Quantidade de carros: " + Configurador.totalCarros());
 		System.out.println("****************************************");
 		System.out.println("Ar condicionado: " + arT);
 		System.out.println("Direção hidraulica: " + direcaoT);
