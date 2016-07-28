@@ -36,11 +36,11 @@ public class Principal {
 		jog = new Jogador();
 
         do {
-        jog.modoJogo = Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha um modo de jogo: \n" +
-        																  "1 - Modo Rapido\n" +
-        																  "2 - Modo treino\n" +
-        																  "3 - Modo Campanha", 
-        																  "TarvMath", 1));
+        	jog.modoJogo = Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha um modo de jogo: \n" +
+        																  	   "1 - Modo Rapido\n" +
+        																  	   "2 - Modo treino\n" +
+        																  	   "3 - Modo Campanha", 
+        																  	   "TarvMath", 1));
         
         } while (jog.modoJogo < 1 || jog.modoJogo > 3);
         
