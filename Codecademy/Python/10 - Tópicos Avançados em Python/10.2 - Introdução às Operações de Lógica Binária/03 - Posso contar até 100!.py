@@ -1,0 +1,12 @@
+um = 0b1
+dois = 0b10
+tres = 0b11
+quatro = 0b100
+cinco = 0b101
+seis = 0b110
+sete = 0b111
+oito = 0b1000
+nove = 0b1001
+dez = 0b1010
+onze = 0b1011
+doze = 0b1100

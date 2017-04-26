@@ -1,0 +1,1 @@
+groceries = ["banana", "laranja", "maca"]
