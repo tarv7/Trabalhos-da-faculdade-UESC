@@ -59,4 +59,3 @@ bool verifica(string pizza, int c, int n){
 
 	return true;
 }
-

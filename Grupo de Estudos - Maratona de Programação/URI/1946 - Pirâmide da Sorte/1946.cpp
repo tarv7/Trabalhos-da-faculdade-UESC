@@ -1,25 +1,25 @@
-#include<cstdio>
+#include<iostream>
+#include<iomanip>
 
-#define h 2
+#define h 3
 #define g 2510
 
 using namespace std;
 
 int main(){
-	int s, i, x;
+	int s, i, j;
 	double mat[h][g];
 
-	scanf("%d", &s);
+	cin >> s;
 
 	mat[0][1] = 100;
+	mat[1][1] = mat[1][2] = 50;
 
-	x = (s / 2) + 1;
-
-	for(i = 1; i < s; i++)
-		for(int j = 1; j <= x; j++)
+	for(i = 2; i < s; i++)
+		for(j = 1; j <= s/2 + 1; j++)
 			mat[i % h][j] = (mat[(i-1) % h][j] + mat[(i-1) % h][j-1]) / 2;
 
-	printf("%.2f\n", mat[--i % h][x]);
+	cout << fixed << setprecision(2) << mat[--i % h][s/2 + 1] << endl;
 
 	return 0;
 }

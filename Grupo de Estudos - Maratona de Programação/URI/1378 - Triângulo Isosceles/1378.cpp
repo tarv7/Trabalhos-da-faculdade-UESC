@@ -28,6 +28,7 @@ int main(){
 			ocor.clear();
 			for (int j = 0; j < n; j++){
 				dist[i][j] = ((unsigned long long)(p[i].x - p[j].x) * (p[i].x - p[j].x)) + ((unsigned long long)(p[i].y - p[j].y) * (p[i].y - p[j].y));
+
 				sum += ocor[dist[i][j]]++;
 			}
 
